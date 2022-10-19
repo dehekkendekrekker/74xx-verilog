@@ -1,4 +1,5 @@
 %: ./src/%.v ./tests/%_TB.v
+	@mkdir -p ./build/
 	@iverilog ./src/$@.v ./tests/$@_TB.v -o ./build/$@.vpp
 	@./build/$@.vpp
 
@@ -9,4 +10,4 @@ all: $(wildcard ./src/*.v)
 
 
 clean:
-	@rm -rf ./build/*
+	@rm -rf ./build/
