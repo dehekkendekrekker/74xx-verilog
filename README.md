@@ -5,3 +5,4 @@ Also contains tests!
 
 ## Implemented devices
 * 74x08  - Quad 2 input AND gates
+* 74x393 - Dual 4 bit ripple counter
