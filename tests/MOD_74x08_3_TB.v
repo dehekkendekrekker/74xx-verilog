@@ -1,16 +1,19 @@
-module MOD_74x08_TB;
-    reg A1,A2,A3,A4;
-    reg B1,B2,B3,B4;
-    wire Y1,Y2,Y3,Y4;
+module MOD_74x08_3_TB;
+    reg A1,A2,A3;
+    reg B1,B2,B3;
+    wire Y1,Y2,Y3;
 
-MOD_74x08 mut(
-    A1,B1,A2,B2,A3,B3,A4,B4,Y1,Y2,Y3,Y4
+MOD_74x08_3 mut(
+    A1,B1,A2,B2,A3,B3,Y1,Y2,Y3
 );
 
 localparam period = 20;  
 
 initial begin
-    $display("=== Testing MOD_74x08 ===");
+    $display("=== Testing MOD_74x08_3 ===");
+    $dumpfile("./build/MOD_74x08_3_TB.vcd");
+    $dumpvars(0, MOD_74x08_3_TB);
+    $timeformat(-6, 0, " us", 20);
 
     // === GATE 1 ===    
     A1 = 1; B1 = 1;
@@ -74,28 +77,6 @@ initial begin
     #period
     if (Y3 == 1) 
         $display("* Test failed for A3(0) & B3(0)");
-
-    
-    // === GATE 4 ===
-    A4 = 1; B4 = 1;
-    #period
-    if (Y4 == 0) 
-        $display("* Test failed for A4(1) & B4(1)");
-
-    A4 = 0; B4 = 1;
-    #period
-    if (Y4 == 1) 
-        $display("* Test failed for A4(0) & B4(1)");
-
-    A4 = 1; B4 = 0;
-    #period
-    if (Y4 == 1) 
-        $display("* Test failed for A4(1) & B4(0)");
-
-    A4 = 0; B4 = 0;
-    #period
-    if (Y4 == 1) 
-        $display("* Test failed for A4(0) & B4(0)");
 end
 
 

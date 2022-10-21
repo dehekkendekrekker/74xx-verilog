@@ -41,6 +41,7 @@ reg q3_should_reset = 0;
 reg q4_should_reset = 0;
 
 initial begin
+    $display("=== Testing MOD_74x08 ===");
     $dumpfile("./build/MOD_74x393_TB.vcd");
     $dumpvars(0, MOD_74x393_TB);
     $timeformat(-6, 0, " us", 20);
