@@ -1,3 +1,4 @@
+// 74x32 - Quad input OR Gate. Gates 1,2 and 3
 module MOD_74x32_3 (
     input A1,
     input B1,

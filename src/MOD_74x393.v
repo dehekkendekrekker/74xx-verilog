@@ -1,4 +1,4 @@
-// ===== 74x393 Dual 4-bit ripple counter
+// 74x393 Dual 4-bit ripple counter
 module MOD_74x393 (
     input CLK1,
     input CLR1,

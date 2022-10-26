@@ -1,4 +1,4 @@
-(* extract_order = 4 *)
+// 74x08 - Quad input AND Gate. Gate 1
 module MOD_74x08_1 (
     input A1,
     input B1,

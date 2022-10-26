@@ -1,3 +1,4 @@
+// 74x08 - Quad input AND Gate. Gates 1,2,3 and 4
 module MOD_74x08_4 (
     input A1,
     input B1,
