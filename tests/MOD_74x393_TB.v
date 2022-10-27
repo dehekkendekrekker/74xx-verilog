@@ -1,6 +1,8 @@
 `timescale 1 ms/10 ps  // time-unit = 1 ms, precision = 10 ps
 
 module MOD_74x393_TB;
+`INIT
+
     reg CLK1;
     reg CLR1;
     reg CLR2;
@@ -41,7 +43,7 @@ reg q3_should_reset = 0;
 reg q4_should_reset = 0;
 
 initial begin
-    $display("=== Testing MOD_74x393 ===");
+    `SET_MOD("MOD_74x393");
     $dumpfile("./build/MOD_74x393_TB.vcd");
     $dumpvars(0, MOD_74x393_TB);
     $timeformat(-6, 0, " us", 20);
@@ -67,7 +69,7 @@ always @(negedge CLK1) begin
     #period
     expectation1 = (expectation1 + 1) % 16;
     if (Q1 != expectation1)
-        $display("* Test failed for Q1 == %d, actual Q1 == %d", expectation1, Q1);
+        `FAILED("Q1 does not meet expectation");
 end
 
 /**
@@ -77,7 +79,7 @@ always @(negedge CLK1) begin
     #period
     expectation2 = (expectation2 + 1) % 16;
     if (Q1 != expectation2)
-        $display("* Test failed for Q2 == %d, actual Q2 == %d", expectation2, Q2);
+        `FAILED("Q2 does not meet expectation");
 end
 
 /**
@@ -87,7 +89,7 @@ always@(negedge CLK1) begin
     #period
     if (CLR3) begin
         if (Q3 != 0) 
-            $display("Q3 did not reset when Q4 == %d", q3_should_reset_on);
+            `FAILED("Q3 does not reset according to expectation");
 
         q3_should_reset_on = (q3_should_reset_on + 1 % 16);
         CLR3 = 0;
@@ -105,7 +107,7 @@ always@(negedge CLK1) begin
     #period
     if (CLR4) begin
         if (Q4 != 0) 
-            $display("Q4 did not reset when Q4 == %d", q4_should_reset_on);
+            `FAILED("Q4 does not reset according to expectation");
 
         q4_should_reset_on = (q4_should_reset_on + 1 % 16);
         CLR4 = 0;
