@@ -1,14 +1,14 @@
 module MOD_74x08_1_TB;
 `INIT
 
-reg A1;
-reg B1;
-wire Y1;
+reg A;
+reg B;
+wire Y;
 
 
 
 MOD_74x08_1 mut(
-    A1,B1,Y1
+    A,B,Y
 );
 
 
@@ -24,25 +24,25 @@ initial begin
     
 
     // === GATE 1 ===    
-    A1 = 1; B1 = 1;
+    A = 1; B = 1;
     #period
-    if (Y1 == 0) 
-        `FAILED("Test failed for A1(1) & B1(1)");
+    if (Y == 0) 
+        `FAILED("Test failed for A(1) & B(1)");
 
-    A1 = 0; B1 = 1;
+    A = 0; B = 1;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(0) & B1(1)");
+    if (Y == 1) 
+        `FAILED("Test failed for A(0) & B(1)");
 
-    A1 = 1; B1 = 0;
+    A = 1; B = 0;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(1) & B1(0)");
+    if (Y == 1) 
+        `FAILED("Test failed for A(1) & B(0)");
 
-    A1 = 0; B1 = 0;
+    A = 0; B = 0;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(0) & B1(0)");
+    if (Y == 1) 
+        `FAILED("Test failed for A(0) & B(0)");
 
 end
 
