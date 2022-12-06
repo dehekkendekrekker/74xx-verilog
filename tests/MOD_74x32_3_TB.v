@@ -1,11 +1,11 @@
 module MOD_74x32_3_TB;
-    reg A1,A2,A3;
-    reg B1,B2,B3;
-    wire Y1,Y2,Y3;
+    reg [0:2] A;
+    reg [0:2] B;
+    wire [0:2] Y;
 `INIT
 
 MOD_74x32_3 mut(
-    A1,B1,A2,B2,A3,B3,Y1,Y2,Y3
+     A,B,Y
 );
 
 localparam period = 20;  
@@ -17,66 +17,66 @@ initial begin
     $timeformat(-6, 0, " us", 20);
 
     // === GATE 1 ===    
-    A1 = 1; B1 = 1;
+    A = 3'b100; B = 3'b100;
     #period
-    if (Y1 == 0) 
-        `FAILED("Test failed for A1(1) | B1(1)");
+    if (Y == 3'b000) 
+        `FAILED("Test failed for A(1) | B(1)");
 
-    A1 = 0; B1 = 1;
+    A = 3'b000; B = 3'b100;
     #period
-    if (Y1 == 0) 
-        `FAILED("Test failed for A1(0) | B1(1)");
+    if (Y == 3'b000) 
+        `FAILED("Test failed for A(0) | B(1)");
 
-    A1 = 1; B1 = 0;
+    A = 3'b100; B = 3'b000;
     #period
-    if (Y1 == 0) 
-        `FAILED("Test failed for A1(1) | B1(0)");
+    if (Y == 3'b000) 
+        `FAILED("Test failed for A(1) | B(0)");
 
-    A1 = 0; B1 = 0;
+    A = 3'b000; B = 3'b000;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(0) | B1(0)");
+    if (Y == 3'b100) 
+        `FAILED("Test failed for A(0) | B(0)");
 
     // === GATE 2 ===
-    A2 = 1; B2 = 1;
+    A = 3'b010; B = 3'b010;
     #period
-    if (Y2 == 0) 
+    if (Y == 3'b000) 
         `FAILED("Test failed for A2(1) | B2(1)");
 
-    A2 = 0; B2 = 1;
+    A = 3'b000; B = 3'b010;
     #period
-    if (Y2 == 0) 
+    if (Y == 3'b000)
         `FAILED("Test failed for A2(0) | B2(1)");
 
-    A2 = 1; B2 = 0;
+    A = 3'b010; B = 3'b000;
     #period
-    if (Y2 == 0) 
+    if (Y == 3'b000)
         `FAILED("Test failed for A2(1) | B2(0)");
 
-    A2 = 0; B2 = 0;
+    A = 3'b000; B = 3'b000;
     #period
-    if (Y2 == 1) 
+    if (Y == 3'b010)
         `FAILED("Test failed for A2(0) | B2(0)");
 
     // === GATE 3 ===
-    A3 = 1; B3 = 1;
+    A = 3'b001; B = 3'b001;
     #period
-    if (Y3 == 0) 
+    if (Y == 3'b000) 
         `FAILED("Test failed for A3(1) | B3(1)");
 
-    A3 = 0; B3 = 1;
+    A = 3'b000; B = 3'b001;
     #period
-    if (Y3 == 0) 
+    if (Y == 3'b000)
         `FAILED("Test failed for A3(0) | B3(1)");
 
-    A3 = 1; B3 = 0;
+    A = 3'b001; B = 3'b000;
     #period
-    if (Y3 == 0) 
+    if (Y == 3'b000) 
         `FAILED("Test failed for A3(1) | B3(0)");
 
-    A3 = 0; B3 = 0;
+    A = 3'b000; B = 3'b000;
     #period
-    if (Y3 == 1) 
+    if (Y == 3'b001)
         `FAILED("Test failed for A3(0) | B3(0)");
 end
 
