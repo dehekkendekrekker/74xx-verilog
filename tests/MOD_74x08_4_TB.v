@@ -1,11 +1,11 @@
 module MOD_74x08_4_TB;
-    reg A1,A2,A3,A4;
-    reg B1,B2,B3,B4;
-    wire Y1,Y2,Y3,Y4;
+    reg [0:3] A;
+    reg [0:3] B;
+    wire [0:3] Y;
 `INIT
 
 MOD_74x08_4 mut(
-    A1,B1,A2,B2,A3,B3,A4,B4,Y1,Y2,Y3,Y4
+    A,B,Y
 );
 
 localparam period = 20;  
@@ -17,88 +17,88 @@ initial begin
     $timeformat(-6, 0, " us", 20);
 
     // === GATE 1 ===    
-    A1 = 1; B1 = 1;
+    A = 4'b1000; B = 4'b1000;
     #period
-    if (Y1 == 0) 
-        `FAILED("Test failed for A1(1) & B1(1)");
+    if (Y == 4'b0000) 
+        `FAILED("Test failed for A(1) & B(1)");
 
-    A1 = 0; B1 = 1;
+    A = 4'b0000; B = 4'b1000;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(0) & B1(1)");
+    if (Y == 4'b1000) 
+        `FAILED("Test failed for A(0) & B(1)");
 
-    A1 = 1; B1 = 0;
+    A = 4'b1000; B = 4'b0000;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(1) & B1(0)");
+    if (Y == 4'b1000) 
+        `FAILED("Test failed for A(1) & B(0)");
 
-    A1 = 0; B1 = 0;
+    A = 4'b0000; B = 4'b0000;
     #period
-    if (Y1 == 1) 
-        `FAILED("Test failed for A1(0) & B1(0)");
+    if (Y == 4'b1000) 
+        `FAILED("Test failed for A(0) & B(0)");
 
     // === GATE 2 ===
-    A2 = 1; B2 = 1;
+    A = 4'b0100; B = 4'b0100;
     #period
-    if (Y2 == 0) 
+    if (Y == 4'b0000) 
         `FAILED("Test failed for A2(1) & B2(1)");
 
-    A2 = 0; B2 = 1;
+    A = 4'b0000; B = 4'b0100;
     #period
-    if (Y2 == 1) 
+    if (Y == 4'b0100) 
         `FAILED("Test failed for A2(0) & B2(1)");
 
-    A2 = 1; B2 = 0;
+    A = 4'b0100; B = 4'b0000;
     #period
-    if (Y2 == 1) 
+    if (Y == 4'b0100) 
         `FAILED("Test failed for A2(1) & B2(0)");
 
-    A2 = 0; B2 = 0;
+    A = 4'b0000; B = 4'b0000;
     #period
-    if (Y2 == 1) 
+    if (Y == 4'b0100) 
         `FAILED("Test failed for A2(0) & B2(0)");
 
     // === GATE 3 ===
-    A3 = 1; B3 = 1;
+    A = 4'b0010; B = 4'b0010;
     #period
-    if (Y3 == 0) 
+    if (Y == 4'b0000)
         `FAILED("Test failed for A3(1) & B3(1)");
 
-    A3 = 0; B3 = 1;
+    A = 4'b0000; B = 4'b0010;
     #period
-    if (Y3 == 1) 
+    if (Y == 4'b0010)
         `FAILED("Test failed for A3(0) & B3(1)");
 
-    A3 = 1; B3 = 0;
+    A = 4'b0010; B = 4'b0000;
     #period
-    if (Y3 == 1) 
+    if (Y == 4'b0010) 
         `FAILED("Test failed for A3(1) & B3(0)");
 
-    A3 = 0; B3 = 0;
+    A = 4'b0000; B = 4'b0000;
     #period
-    if (Y3 == 1) 
+    if (Y == 4'b0010) 
         `FAILED("Test failed for A3(0) & B3(0)");
 
     
     // === GATE 4 ===
-    A4 = 1; B4 = 1;
+    A = 4'b0001; B = 4'b0001;
     #period
-    if (Y4 == 0) 
+    if (Y == 4'b0000)
         `FAILED("Test failed for A4(1) & B4(1)");
 
-    A4 = 0; B4 = 1;
+    A = 4'b0000; B = 4'b0001;
     #period
-    if (Y4 == 1) 
+    if (Y == 4'b0001)
         `FAILED("Test failed for A4(0) & B4(1)");
 
-    A4 = 1; B4 = 0;
+    A = 4'b0001; B = 4'b0000;
     #period
-    if (Y4 == 1) 
+    if (Y == 4'b0001)  
         `FAILED("Test failed for A4(1) & B4(0)");
 
-    A4 = 0; B4 = 0;
+    A = 4'b0000; B = 4'b0000;
     #period
-    if (Y4 == 1) 
+    if (Y == 4'b0001) 
         `FAILED("Test failed for A4(0) & B4(0)");
 end
 

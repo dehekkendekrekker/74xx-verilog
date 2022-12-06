@@ -1,13 +1,9 @@
 // 74x32 - Quad input OR Gate. Gates 1 and 2
 module MOD_74x32_2 (
-    input A1,
-    input B1,
-    input A2,
-    input B2,
-    output Y1,
-    output Y2);
+    input [0:1] A,
+    input [0:1] B,
+    output [0:1] Y);
 
-assign Y1 = A1 | B1;
-assign Y2 = A2 | B2;
+assign Y = A | B;
 
 endmodule
