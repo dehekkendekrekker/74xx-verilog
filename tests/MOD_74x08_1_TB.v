@@ -23,23 +23,26 @@ initial begin
 
     
 
-    // === GATE 1 ===    
-    A = 1; B = 1;
+    A = 1; 
+    B = 1;
     #period
     if (Y == 0) 
         `FAILED("Test failed for A(1) & B(1)");
 
-    A = 0; B = 1;
+    A = 0;
+    B = 1;
     #period
     if (Y == 1) 
         `FAILED("Test failed for A(0) & B(1)");
 
-    A = 1; B = 0;
+    A = 1; 
+    B = 0;
     #period
     if (Y == 1) 
         `FAILED("Test failed for A(1) & B(0)");
 
-    A = 0; B = 0;
+    A = 0; 
+    B = 0;
     #period
     if (Y == 1) 
         `FAILED("Test failed for A(0) & B(0)");

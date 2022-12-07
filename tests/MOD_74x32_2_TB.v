@@ -17,46 +17,31 @@ initial begin
     $timeformat(-6, 0, " us", 20);
 
     // === GATE 1 ===    
-    A = 2'b10; B = 2'b10;
+    A = 2'b11; 
+    B = 2'b11;
     #period
     if (Y == 2'b00) 
         `FAILED("Test failed for A(1) | B(1)");
 
-    A = 2'b00; B = 2'b10;
+    A = 2'b11; 
+    B = 2'b00;
     #period
-    if (Y == 2'b00) 
+    if (Y != 2'b11) 
         `FAILED("Test failed for A(0) | B(1)");
 
-    A = 2'b10; B = 2'b00;
+    A = 2'b00; 
+    B = 2'b11;
     #period
-    if (Y == 2'b00) 
+    if (Y != 2'b11) 
         `FAILED("Test failed for A(1) | B(0)");
 
-    A = 2'b00; B = 2'b00;
+    A = 2'b00; 
+    B = 2'b00;
     #period
-    if (Y == 2'b10) 
+    if (Y != 2'b00) 
         `FAILED("Test failed for A(0) | B(0)");
 
-    // === GATE 2 ===
-    A = 2'b01; B = 2'b01;
-    #period
-    if (Y == 2'b00) 
-        `FAILED("Test failed for A2(1) | B2(1)");
-
-    A = 2'b00; B = 2'b01;
-    #period
-    if (Y == 2'b00)
-        `FAILED("Test failed for A2(0) | B2(1)");
-
-    A = 2'b01; B = 2'b00;
-    #period
-    if (Y == 2'b00)
-        `FAILED("Test failed for A2(1) | B2(0)");
-
-    A = 2'b00; B = 2'b00;
-    #period
-    if (Y == 2'b01)
-        `FAILED("Test failed for A2(0) | B2(0)");
+  
 end
 
 
