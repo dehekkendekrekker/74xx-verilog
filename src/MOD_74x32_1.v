@@ -7,3 +7,4 @@ module MOD_74x32_1 (
 assign Y = A | B;
 
 endmodule
+

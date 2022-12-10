@@ -1,11 +1,21 @@
 module MOD_74x32_1_TB;
-    reg A;
-    reg B;
-    wire Y;
+   
 `INIT
 
-MOD_74x32_1 mut(
-    A,B,Y
+reg A1;
+reg B1;
+wire Y1;
+
+reg A2;
+reg B2;
+wire Y2;
+
+MOD_74x32_1 mut1(
+    A1,B1,Y1
+);
+
+MOD_74x32_1 mut2(
+    A2,B2,Y2
 );
 
 localparam period = 20;  
@@ -17,28 +27,54 @@ initial begin
     $timeformat(-6, 0, " us", 20);
 
     // === GATE 1 ===    
-    A = 1; 
-    B = 1;
+    A1 = 1; 
+    B1 = 1;
     #period
-    if (Y == 0) 
+    if (Y1 == 0) 
         `FAILED("Test failed for A(1) | B(1)");
 
-    A = 0;
-    B = 1;
+    A1 = 0;
+    B1 = 1;
     #period
-    if (Y == 0) 
+    if (Y1 == 0) 
         `FAILED("Test failed for A(0) | B(1)");
 
-    A = 1; 
-    B = 0;
+    A1 = 1; 
+    B1 = 0;
     #period
-    if (Y == 0) 
+    if (Y1 == 0) 
         `FAILED("Test failed for A(1) | B(0)");
 
-    A = 0; 
-    B = 0;
+    A1 = 0; 
+    B1 = 0;
     #period
-    if (Y == 1) 
+    if (Y1 == 1) 
+        `FAILED("Test failed for A(0) | B(0)");
+
+    //====
+
+    A2 = 1; 
+    B2 = 1;
+    #period
+    if (Y2 == 0) 
+        `FAILED("Test failed for A(1) | B(1)");
+
+    A2= 0;
+    B2 = 1;
+    #period
+    if (Y2 == 0) 
+        `FAILED("Test failed for A(0) | B(1)");
+
+    A2 = 1; 
+    B2 = 0;
+    #period
+    if (Y2 == 0) 
+        `FAILED("Test failed for A(1) | B(0)");
+
+    A2 = 0; 
+    B2 = 0;
+    #period
+    if (Y2 == 1) 
         `FAILED("Test failed for A(0) | B(0)");
 end
 
