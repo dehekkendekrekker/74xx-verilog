@@ -14,14 +14,14 @@ MOD_74x32_2 mu1(
     A1,B1,Y1
 );
 
-MOD_74x32_2 mut2(
+MOD_74x32_2_SPLIT mut2(
     A2,B2,Y2
 );
 
 localparam period = 20;  
 
 initial begin
-    `SET_MOD("MOD_74x32_2");
+    `SET_MOD("MOD_74x32_2_TB");
     $dumpfile("./build/MOD_74x32_2_TB.vcd");
     $dumpvars(0, MOD_74x32_2_TB);
     $timeformat(-6, 0, " us", 20);

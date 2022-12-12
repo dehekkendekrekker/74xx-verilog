@@ -43,7 +43,7 @@ reg q3_should_reset = 0;
 reg q4_should_reset = 0;
 
 initial begin
-    `SET_MOD("MOD_74x393");
+    `SET_MOD("MOD_74x393_TB");
     $dumpfile("./build/MOD_74x393_TB.vcd");
     $dumpvars(0, MOD_74x393_TB);
     $timeformat(-6, 0, " us", 20);

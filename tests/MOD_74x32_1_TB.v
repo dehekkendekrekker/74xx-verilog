@@ -14,14 +14,11 @@ MOD_74x32_1 mut1(
     A1,B1,Y1
 );
 
-MOD_74x32_1 mut2(
-    A2,B2,Y2
-);
 
 localparam period = 20;  
 
 initial begin
-    `SET_MOD("MOD_74x32_1");
+    `SET_MOD("MOD_74x32_1_TB");
     $dumpfile("./build/MOD_74x32_1_TB.vcd");
     $dumpvars(0, MOD_74x32_1_TB);
     $timeformat(-6, 0, " us", 20);
@@ -53,29 +50,6 @@ initial begin
 
     //====
 
-    A2 = 1; 
-    B2 = 1;
-    #period
-    if (Y2 == 0) 
-        `FAILED("Test failed for A(1) | B(1)");
-
-    A2= 0;
-    B2 = 1;
-    #period
-    if (Y2 == 0) 
-        `FAILED("Test failed for A(0) | B(1)");
-
-    A2 = 1; 
-    B2 = 0;
-    #period
-    if (Y2 == 0) 
-        `FAILED("Test failed for A(1) | B(0)");
-
-    A2 = 0; 
-    B2 = 0;
-    #period
-    if (Y2 == 1) 
-        `FAILED("Test failed for A(0) | B(0)");
 end
 
 
