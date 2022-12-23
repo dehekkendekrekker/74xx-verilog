@@ -6,9 +6,9 @@ parameter A_WIDTH = 0;
 parameter B_WIDTH = 0;
 parameter Y_WIDTH = 0;
 
-input A[1:0];
-input B[1:0];
-output Y[1:0];
+input [1:0] A;
+input [1:0] B;
+output [1:0] Y;
 
 AND _TECHMAP_REPLACE_(.A(A), .B(B), .Y(Y));
 
@@ -22,9 +22,9 @@ parameter A_WIDTH = 0;
 parameter B_WIDTH = 0;
 parameter Y_WIDTH = 0;
 
-input A[1:0];
-input B[1:0];
-output Y[1:0];
+input [1:0] A;
+input [1:0] B;
+output [1:0] Y;
 
 
 AND _TECHMAP_REPLACE_(.A(A), .B(B), .Y(Y));

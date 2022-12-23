@@ -6,9 +6,9 @@ parameter A_WIDTH = 0;
 parameter B_WIDTH = 0;
 parameter Y_WIDTH = 0;
 
-input A[2:0];
-input B[2:0];
-output Y[2:0];
+input [2:0] A;
+input [2:0] B;
+output [2:0] Y;
 
 XOR _TECHMAP_REPLACE_(.A(A), .B(B), .Y(Y));
 
@@ -22,9 +22,9 @@ parameter A_WIDTH = 0;
 parameter B_WIDTH = 0;
 parameter Y_WIDTH = 0;
 
-input A[2:0];
-input B[2:0];
-output Y[2:0];
+input [2:0] A;
+input [2:0] B;
+output [2:0] Y;
 
 
 XOR _TECHMAP_REPLACE_(.A(A), .B(B), .Y(Y));
